@@ -1,0 +1,69 @@
+{
+    "filePath": "images/sample4.jpg",
+    "annotations": [
+        {
+            "classLabel": "person",
+            "bbox": [
+                210,
+                64,
+                379,
+                211
+            ]
+        },
+        {
+            "classLabel": "tv",
+            "bbox": [
+                162,
+                64,
+                254,
+                125
+            ]
+        },
+        {
+            "classLabel": "keyboard",
+            "bbox": [
+                204,
+                164,
+                248,
+                181
+            ]
+        },
+        {
+            "classLabel": "person",
+            "bbox": [
+                150,
+                9,
+                198,
+                73
+            ]
+        },
+        {
+            "classLabel": "person",
+            "bbox": [
+                251,
+                14,
+                276,
+                63
+            ]
+        },
+        {
+            "classLabel": "tv",
+            "bbox": [
+                251,
+                61,
+                348,
+                136
+            ]
+        },
+        {
+            "classLabel": "person",
+            "bbox": [
+                229,
+                17,
+                255,
+                63
+            ]
+        }
+    ],
+    "imageCaption": "a man sitting at a desk in front of a computer"
+}

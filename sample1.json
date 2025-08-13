@@ -1,0 +1,33 @@
+{
+    "filePath": "images/sample1.jpg",
+    "annotations": [
+        {
+            "classLabel": "person",
+            "bbox": [
+                123,
+                197,
+                1110,
+                710
+            ]
+        },
+        {
+            "classLabel": "person",
+            "bbox": [
+                746,
+                40,
+                1142,
+                712
+            ]
+        },
+        {
+            "classLabel": "tie",
+            "bbox": [
+                436,
+                437,
+                523,
+                713
+            ]
+        }
+    ],
+    "imageCaption": ""
+}
