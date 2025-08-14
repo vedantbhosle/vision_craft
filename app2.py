@@ -1,7 +1,5 @@
 from ultralytics import YOLO
 import cv2
-import numpy as np
-import json
 import os
 from dotenv import load_dotenv
 from transformers import BlipProcessor, BlipForConditionalGeneration
@@ -19,7 +17,7 @@ model = YOLO("yolov8-weights/yolov8n.pt")
 processor = BlipProcessor.from_pretrained("Salesforce/blip-image-captioning-base")
 model_blip = BlipForConditionalGeneration.from_pretrained("Salesforce/blip-image-captioning-base")
 
-# Provide your folder path directly here
+# Folder path
 folder_path = "/Users/vedantprashantbhosale/Desktop/Akai visison craft/images"
 
 app = FastAPI()
@@ -79,12 +77,7 @@ def process_folder():
 
         all_outputs.append(output_data)
 
-    # Save single JSON file inside the folder
-    output_json_path = os.path.join(folder_path, "combined_output.json")
-    with open(output_json_path, "w") as f:
-        json.dump(all_outputs, f, indent=4)
-
-    return {"message": "Processing complete", "outputFile": output_json_path, "results": all_outputs}
+    return {"message": "Processing complete", "results": all_outputs}
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8000)
