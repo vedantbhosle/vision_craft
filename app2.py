@@ -6,19 +6,21 @@ from transformers import BlipProcessor, BlipForConditionalGeneration
 from PIL import Image
 from fastapi import FastAPI
 from fastapi.responses import JSONResponse
-import uvicorn
+import uvicorn 
 
 load_dotenv()
 
-# Load YOLOv8 model
+# YOLOv8 model
 model = YOLO("yolov8-weights/yolov8n.pt")
 
-# Load BLIP captioning model
+# BLIP captioning model
 processor = BlipProcessor.from_pretrained("Salesforce/blip-image-captioning-base")
 model_blip = BlipForConditionalGeneration.from_pretrained("Salesforce/blip-image-captioning-base")
 
-# Folder path
+# Folders
 folder_path = "/Users/vedantprashantbhosale/Desktop/Akai visison craft/images"
+annotated_folder = "/Users/vedantprashantbhosale/Desktop/Akai visison craft/annotations"
+os.makedirs(annotated_folder, exist_ok=True)
 
 app = FastAPI()
 
@@ -42,8 +44,8 @@ def process_folder():
     for filename in os.listdir(folder_path):
         if not filename.lower().endswith(supported_exts):
             continue
-        image_path = os.path.join(folder_path, filename)
 
+        image_path = os.path.join(folder_path, filename)
         image_cv = cv2.imread(image_path)
         if image_cv is None:
             continue
@@ -54,6 +56,7 @@ def process_folder():
         results = model(image_cv)
         output_data = {
             "filePath": image_path,
+            "annotatedFilePath": "",
             "annotations": [],
             "imageCaption": "",
             "status": "pending"
@@ -64,10 +67,22 @@ def process_folder():
             for box in boxes:
                 x1, y1, x2, y2 = map(int, box.xyxy[0])
                 label = model.names[int(box.cls[0])]
+                conf = float(box.conf[0])
+
+                # Draw bounding boxes
+                cv2.rectangle(image_cv, (x1, y1), (x2, y2), (0, 255, 0), 4)
+                cv2.putText(image_cv, f"{label} {conf:.2f}", (x1, y1 - 10),
+                            cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
+
                 output_data["annotations"].append({
                     "classLabel": label,
                     "bbox": [x1, y1, x2, y2]
                 })
+
+        # Save annotated image
+        annotated_path = os.path.join(annotated_folder, filename)
+        cv2.imwrite(annotated_path, image_cv)
+        output_data["annotatedFilePath"] = annotated_path
 
         # Run BLIP captioning
         inputs = processor(pil_image, return_tensors="pt")
