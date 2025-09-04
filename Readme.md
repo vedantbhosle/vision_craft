@@ -51,7 +51,7 @@ This platform combines **YOLOv8** for object detection, **BLIP** for automatic i
     Create a `.env` file in the project root with the following:
 
     ```env
-    HF_API_TOKEN=your_huggingface_api_token_here
+    HUGGINGFACEHUB_API_TOKEN = your_huggingface_api_token_here
     ```
 
     This is required for BLIP to fetch captions from Hugging Face.
@@ -74,13 +74,13 @@ This platform combines **YOLOv8** for object detection, **BLIP** for automatic i
 ### 1. Start the FastAPI backend
 
 ```bash
-uvicorn main:app --reload --host 0.0.0.0 --port 8000
+python run app2.py
 ```
 
 ### 2. Start the Streamlit frontend
 
 ```bash
-streamlit run app.py
+streamlit run client2.py
 ```
 
 ### 3. Workflow
