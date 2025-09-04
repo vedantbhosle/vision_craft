@@ -125,7 +125,7 @@ streamlit run app.py
 
 ## 🗄️ Example Screenshot
 
-![Dashboard](Akai visison craft/img_for_readme/image_1.png)
+![Dashboard](./img_for_readme/image_1.png)
 <!-- ![alt text](image-1.png)
 ![alt text](image-2.png)
 ![alt text](image-3.png) -->
