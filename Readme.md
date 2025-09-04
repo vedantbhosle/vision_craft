@@ -126,9 +126,9 @@ streamlit run app.py
 ## 🗄️ Example Screenshot
 
 ![Dashboard](./img_for_readme/image_1.png)
-<!-- ![alt text](image-1.png)
-![alt text](image-2.png)
-![alt text](image-3.png) -->
+![Dashboard](./img_for_readme/image_2.png)
+![Bounding Box](./img_for_readme/image_3.png)
+![Dashboard](./img_for_readme/image_4.png)
 ---
 
 ## 🤝 Contributing
