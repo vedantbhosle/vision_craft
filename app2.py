@@ -21,7 +21,9 @@ model_blip = BlipForConditionalGeneration.from_pretrained("Salesforce/blip-image
 # Folders (upload your folder paths)
 folder_path = "/Users/vedantprashantbhosale/Desktop/Akai visison craft/images"
 annotated_folder = "/Users/vedantprashantbhosale/Desktop/Akai visison craft/annotations"
+updated_annotations_path = "/Users/vedantprashantbhosale/Desktop/Akai visison craft/updated_annotations.json"
 updated_json_path = "/Users/vedantprashantbhosale/Desktop/Akai visison craft/updated_results.json"
+
 os.makedirs(annotated_folder, exist_ok=True)
 
 last_results = []
@@ -85,21 +87,39 @@ def process_folder():
 
         all_outputs.append(output_data)
 
-    # Merge with any previous results to retain updated captions
-    if os.path.exists(updated_json_path):
-        try:
-            with open(updated_json_path, "r") as f:
-                prev_data = json.load(f)
-            for prev_item in prev_data:
-                for new_item in all_outputs:
-                    if prev_item["filePath"] == new_item["filePath"]:
-                        new_item["imageCaption"] = prev_item.get("imageCaption", new_item["imageCaption"])
-        except Exception:
-            pass
-
     last_results = all_outputs
 
     return {"message": "Processing complete", "results": all_outputs}
+
+@app.post("/update_bbox")
+async def update_bbox(request: Request):
+    global last_results
+    data = await request.json()
+    file_path = data.get("filePath")
+    new_annotations = data.get("annotations", [])
+    updated = False
+
+    for item in last_results:
+        if item["filePath"] == file_path:
+            item["annotations"] = new_annotations
+            item["status"] = "updated"
+            updated = True
+            break
+
+    if updated:
+        # Save new annotations separately (image path + updated boxes)
+        updated_annots = []
+        for item in last_results:
+            updated_annots.append({
+                "filePath": item["filePath"],
+                "annotations": item["annotations"]
+            })
+        with open(updated_annotations_path, "w") as f:
+            json.dump(updated_annots, f, indent=4)
+
+        return {"message": "Bounding boxes updated successfully", "results": last_results}
+    else:
+        return JSONResponse(content={"error": "File path not found in last results"}, status_code=404)
 
 @app.post("/update_caption")
 async def update_caption(request: Request):
@@ -122,6 +142,7 @@ async def update_caption(request: Request):
         return {"message": "Caption updated successfully", "results": last_results}
     else:
         return JSONResponse(content={"error": "File path not found in last results"}, status_code=404)
+
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8000)
