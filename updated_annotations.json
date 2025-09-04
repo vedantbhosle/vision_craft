@@ -1,0 +1,180 @@
+[
+    {
+        "filePath": "/Users/vedantprashantbhosale/Desktop/Akai visison craft/images/sample5.jpg",
+        "annotations": [
+            {
+                "classLabel": "person1",
+                "bbox": [
+                    183,
+                    176,
+                    242,
+                    352
+                ]
+            },
+            {
+                "classLabel": "person2",
+                "bbox": [
+                    265,
+                    190,
+                    325,
+                    366
+                ]
+            }
+        ]
+    },
+    {
+        "filePath": "/Users/vedantprashantbhosale/Desktop/Akai visison craft/images/sample4.jpg",
+        "annotations": [
+            {
+                "classLabel": "person",
+                "bbox": [
+                    210,
+                    64,
+                    379,
+                    211
+                ]
+            },
+            {
+                "classLabel": "tv",
+                "bbox": [
+                    162,
+                    64,
+                    254,
+                    125
+                ]
+            },
+            {
+                "classLabel": "keyboard",
+                "bbox": [
+                    204,
+                    164,
+                    248,
+                    181
+                ]
+            },
+            {
+                "classLabel": "person",
+                "bbox": [
+                    150,
+                    9,
+                    198,
+                    73
+                ]
+            },
+            {
+                "classLabel": "person",
+                "bbox": [
+                    251,
+                    14,
+                    276,
+                    63
+                ]
+            },
+            {
+                "classLabel": "tv",
+                "bbox": [
+                    251,
+                    61,
+                    348,
+                    136
+                ]
+            },
+            {
+                "classLabel": "person",
+                "bbox": [
+                    229,
+                    17,
+                    255,
+                    63
+                ]
+            }
+        ]
+    },
+    {
+        "filePath": "/Users/vedantprashantbhosale/Desktop/Akai visison craft/images/sample1.jpg",
+        "annotations": [
+            {
+                "classLabel": "person",
+                "bbox": [
+                    123,
+                    197,
+                    1110,
+                    710
+                ]
+            },
+            {
+                "classLabel": "person",
+                "bbox": [
+                    746,
+                    40,
+                    1142,
+                    712
+                ]
+            },
+            {
+                "classLabel": "tie",
+                "bbox": [
+                    436,
+                    437,
+                    523,
+                    713
+                ]
+            }
+        ]
+    },
+    {
+        "filePath": "/Users/vedantprashantbhosale/Desktop/Akai visison craft/images/sample3.png",
+        "annotations": [
+            {
+                "classLabel": "person",
+                "bbox": [
+                    328,
+                    52,
+                    795,
+                    826
+                ]
+            },
+            {
+                "classLabel": "skateboard",
+                "bbox": [
+                    238,
+                    683,
+                    667,
+                    920
+                ]
+            }
+        ]
+    },
+    {
+        "filePath": "/Users/vedantprashantbhosale/Desktop/Akai visison craft/images/sample2.jpg",
+        "annotations": [
+            {
+                "classLabel": "laptop",
+                "bbox": [
+                    106,
+                    217,
+                    583,
+                    691
+                ]
+            },
+            {
+                "classLabel": "keyboard",
+                "bbox": [
+                    2,
+                    685,
+                    715,
+                    914
+                ]
+            },
+            {
+                "classLabel": "keyboard",
+                "bbox": [
+                    156,
+                    505,
+                    542,
+                    598
+                ]
+            }
+        ]
+    }
+]
