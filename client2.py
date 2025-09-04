@@ -4,7 +4,7 @@ from streamlit_drawable_canvas import st_canvas
 from PIL import Image
 
 st.set_page_config(layout="wide")
-st.title("AkaiVisionCraft - Editable Bounding Box & Caption Editor")
+st.title("AkaiVisionCraft - Image Labeling Platform")
 
 # --- Configuration ---
 API_URL_PROCESS = "http://localhost:8000/process_folder"
