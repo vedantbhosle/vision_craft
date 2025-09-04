@@ -102,8 +102,8 @@ streamlit run app.py
 
 ```
 .
-├── app.py                     # Streamlit frontend
-├── main.py                    # FastAPI backend
+├── client2.py                 # Streamlit frontend
+├── app2.py                    # FastAPI backend
 ├── yolov8-weights/            # YOLOv8 model weights
 ├── images/                    # Input images
 ├── annotations/               # Auto-saved annotated images
